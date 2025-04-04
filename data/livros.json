@@ -1,0 +1,12 @@
+{
+    "livros": [
+        {
+            "titulo": "O Senhor dos Anéis",
+            "autor": "J. R. R. Tolkien",
+            "editora": "Martins Fontes",
+            "ano": 2000,
+            "isbn": 1,
+            "emprestado": false
+        }
+    ]
+}
