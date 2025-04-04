@@ -1,0 +1,13 @@
+{
+    "Autores:"{
+        "nome": {},
+        "idade": {},
+        "nacionalidade": {},
+        "livros": {
+            "titulo": {},
+            "ano_publicacao": {},
+            "genero": {},
+            "resumo": {}
+        }
+    }
+}

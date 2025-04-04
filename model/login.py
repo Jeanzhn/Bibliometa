@@ -1,8 +1,10 @@
 import json
-with open('dados.json', 'r') as file:
-    dados = json.load(file)
 
-def login(nome, senha):
-    for nome_usuario, senha_usuario in dados['pessoas']:
-        if nome_usuario not in dados['nome'] and senha_usuario not in dados['senha']:
+with open('data/users.json', 'r') as file:
+    table_users = json.load(file)
+
+def login(nome_user, senha_user):
+    for nome, senha in table_users['membros']:
+        if nome_user not in table_users['nome'] and senha_user not in table_users['senha']:
+            return False
             
