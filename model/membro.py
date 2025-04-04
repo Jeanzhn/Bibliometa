@@ -1,4 +1,5 @@
 from pessoa import Pessoa
+
 class Membro(Pessoa):
     def __init__(self, id_membro, historico_emprestimos):
         super().__init__(nome, idade, tipo)
