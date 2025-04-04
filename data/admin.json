@@ -2,11 +2,13 @@
     "admin": [
         {
             "nome": "admin",
-            "senha": "000000"
+            "senha": "000000",
+            "id_admin": 1
         },
         {
             "nome": "admin2",
-            "senha": "000000"
+            "senha": "000000",
+            "id_admin": 2
         }
     ]
 }
