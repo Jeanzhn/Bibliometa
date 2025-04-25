@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Login - Meu Site{% endblock %}
+{% block title %}login{% endblock %}
 
 {% block content %}
 <form method = "POST"></form>
@@ -13,7 +13,7 @@
             <label for="password">Password:</label>
             <input type="password" id="password_user" name="password_user" required>
         </div>
-        <button type="submit" class= "container_botao" >EMBARCAR</button>
+        <button type="button" class="container_botao" onclick="window.location.href='{{ url_for('busca_livro') }}'">Concluido</button>
     </div>
 </form>
 {% endblock %}

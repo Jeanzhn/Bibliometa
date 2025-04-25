@@ -9,4 +9,3 @@ class Pessoa:
         print(f"Email: {self.email}")
         print(f"Tipo: {self.tipo}")
     
-    
