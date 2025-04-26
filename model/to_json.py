@@ -3,9 +3,17 @@ import json
 def To_json():
     def to_json(self, saida):
         try:
-            json.dump(self.__dict__)
+            dados_existentes = []
+            try:
+                with open(saida, 'r') as file:
+                    dados_existentes = json.load(file)
+                    if not isinstance(dados_existentes, list):
+                        dados_existentes = [dados_existentes]
+            except (FileNotFoundError, json.JSONDecodeError):
+                dados_existentes = []
+            dados_existentes.append(self.__dict__)
             with open(saida, 'w') as file:
-                json.dump(self.__dict__, file, indent=4, ensure_ascii=False) #converte o dicionário em JSON e salva no arquivo
+                json.dump(dados_existentes, file, indent=4, ensure_ascii=False)
         except TypeError as e:
             raise TypeError(f"Erro ao converter para JSON: {e}")
         
