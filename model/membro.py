@@ -12,8 +12,6 @@ class Membro(Pessoa):
                 print(f"- {emprestimo['id_emprestimo']} {emprestimo['titulo_livro']} {emprestimo['data_emprestimo']}")
         else:
             emprestimo = "Nenhum empréstimo registrado."
-    
-    #def devolucao_emprestimo(self, emprestimo, status):
         
     def add_emprestimo(self, id_emprestimo, livro, data_emprestimo):
         emprestimo = {

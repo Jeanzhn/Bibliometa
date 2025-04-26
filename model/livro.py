@@ -11,8 +11,6 @@ class Livro:
         self.isbn = isbn
         self.disponivel = True
     
-
-
     def exibir_informacoes(self):
         print(f"Título: {self.titulo}")
         print(f"Autor: {self.autor}")
@@ -28,7 +26,7 @@ class Livro:
         else:
             print(f"O livro '{self.titulo}' não está disponível para empréstimo.")
 
-    def busca_livro(parametro):
+    def buscar_info_livro(parametro):
         requisicao = requests.get(f'https://www.googleapis.com/books/v1/volumes?q={parametro}')
         try:
             new_livro={
