@@ -4,9 +4,3 @@ class Autor(Pessoa):
         super().__init__(nome, idade, tipo)
         self.nacionalidade = nacionalidade
         self.livros = []
-
-    def exibir_informacoes(self):
-        print(f"Nome: {self.nome}")
-        print(f"Nacionalidade: {self.nacionalidade}")
-        print(f"Livros:{self.livros}")
-        
