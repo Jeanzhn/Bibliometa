@@ -2,6 +2,9 @@ function logout() {
     alert("Você saiu da conta!");
     window.location.href = "/logout";
 }
+function login() {
+    window.location.href = "/login";
+}
 
 function searchBook() {
     const input = document.getElementById("searchInput").value.toLowerCase();

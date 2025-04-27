@@ -16,4 +16,12 @@ def To_json():
                 json.dump(dados_existentes, file, indent=4, ensure_ascii=False)
         except TypeError as e:
             raise TypeError(f"Erro ao converter para JSON: {e}")
+
+def save_users(users):
+    with open('users.json', 'w') as f:
+        json.dump(users, f, indent=4)
+
+def load_users():
+    with open('user.json', 'r') as f:
+        return json.load(f)
         

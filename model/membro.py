@@ -2,7 +2,7 @@ from pessoa import Pessoa
 
 class Membro(Pessoa):
     def __init__(self, id_membro, historico_emprestimos):
-        super().__init__(nome, idade, tipo)
+        super().__init__(nome, tipo)
         self.id_membro = id_membro
         self.historico_emprestimos = []
     
