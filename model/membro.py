@@ -21,8 +21,3 @@ class Membro(Pessoa):
         }
         self.historico_emprestimos.append(emprestimo)
         
-    def exibir_informacoes_membro(self): 
-        print(f"Nome: {self.nome}")
-        print(f"ID do Membro: {self.id_membro}")
-        print(f"Histórico de Empréstimos:{self.emprestimo}")
-        

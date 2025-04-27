@@ -1,59 +1,44 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+    <title>Login</title>
+</head>
 
-{% block title %}Login{% endblock %}
-
-{% block content %}
-<main class="container">
-    <form id="authForm" method="POST" action="{{ url_for('login') if not show_register else url_for('register') }}">
-        <h1>Já é de Casa?</h1>
-        
-        {% if error %}
-        <div class="alert alert-danger">{{ error }}</div>
-        {% endif %}
-        
-        {% if register_error %}
-        <div class="alert alert-danger">{{ register_error }}</div>
-        {% endif %}
-        
-        {% if success %}
-        <div class="alert alert-success">{{ success }}</div>
-        {% endif %}
-        
-        <div class="input-box">
-            <input id="username" name="username" placeholder="Usuário" type="text" required>
-            <i class="bx bxs-user"></i>
-        </div>
-        <div class="input-box">
-            <input id="password" name="password" placeholder="Senha" type="password" required>
-            <i class="bx bxs-lock-alt"></i>
-        </div>
-        
-        {% if not show_register %}
-        <div id="loginSection">
+<body>
+    <main class=" container">
+        <form>
+            <h1> CIDADELA </h1> 
+            <div class="input-box">
+                <input placeholder="Usuário" type="email">
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-box">
+                <input placeholder="Senha" type="password">
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+            
             <div class="remember-forgot">
                 <label>
                     <input type="checkbox">
                     Lembrar senha
                 </label>
-                <a href="#">Esqueci a senha</a>
+                <a href="http://127.0.0.1:5000/forgot">Esqueci a senha</a>
             </div>
-            <button type="submit" class="container_botao">Entrar</button>
-            <div class="resgister-link">
-                <p>Não tem uma conta? <a href="{{ url_for('register') }}">Cadastre-se</a></p>
+
+            <button type="submit" class="login">Login</button>
+
+            <div class="register-link">
+                <p>Não possui uma conta? <a  href="http://127.0.0.1:5000/register">Cadastre-se</a></p>
             </div>
-        </div>
-        {% else %}
-        <div id="registerSection">
-            <div class="input-box">
-                <input id="confirm_password" name="confirm_password" placeholder="Confirmar Senha" type="password" required>
-                <i class="bx bxs-lock-alt"></i>
-            </div>
-            <button type="submit" class="container_botao">Registrar</button>
-            <div class="resgister-link">
-                <p>Já tem uma conta? <a href="{{ url_for('login') }}">Faça login</a></p>
-            </div>
-        </div>
-        {% endif %}
-    </form>
-</main>
-{% endblock %}
+        </form> 
+       
+    </main>
+    
+</body>
+
+</html>

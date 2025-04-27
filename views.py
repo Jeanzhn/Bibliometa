@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for, session, jsonify
-from model import to_json 
+from model import to_json
 from main import app
+import uuid
 
 @app.route("/")
 
@@ -8,6 +9,7 @@ def homepage():
     return render_template('base.html')
 
 @app.route("/login", methods=['GET', 'POST'])
+
 def login():
     if request.method == 'POST':
         nome = request.form.get('nome')
@@ -24,45 +26,58 @@ def login():
     return render_template('bibliometa/login.html')
 
 @app.route("/register", methods=['GET', 'POST'])
+
 def register():
     if request.method == 'POST':
         nome = request.form.get('nome')
+        email = request.form.get('email')
         senha = request.form.get('senha')
-        confirm_senha = request.form.get('confirm_senha')
+        confirmar_senha = request.form.get('confirmar_senha')
+        id_membro = str(uuid.uuid4())
         
-        users = to_json.load_users()
+        users = to_json('users.json')
         
-        if not nome or not senha:
-            return render_template('login.html', register_error="Todos os campos são obrigatórios", show_register=True)
+        if not all([nome, email, senha, confirmar_senha]):
+            return "Preencha todos os campos!", 400
         
-        if senha != confirm_senha:
-            return render_template('login.html', register_error="As senhas não coincidem", show_register=True)
+        if senha != confirmar_senha:
+            return "As senhas não coincidem!", 400
         
         if nome in users:
             return render_template('login.html', register_error="Usuário já existe", show_register=True)
         
-        users[nome] = {'senha': senha}
-        to_json.save_users(users)
+        if senha in users:
+            return render_template('login.html', register_error="Esta senha ja existe", show_registrer=True)
         
-        return render_template('login.html', success="Registro realizado com sucesso! Faça login.")
-    
-    return redirect(url_for('login'))
+        users[nome] = {'senha': senha, 'email': email, 'id_membro' : id_membro}
+        users.to_json('user.json')
+        
+        return render_template('seabook.html', success="Registro realizado com sucesso! Bem vindo.")
+   
+    return render_template('bibliometa/register.html')
 
-@app.route("/busca_livro", methods=['GET', 'POST'])
-
+@app.route("/seabook", methods=['GET', 'POST'])
+ 
 def busca_livro():
-    if 'nome' not in session:
-        return redirect(url_for('login'))
+    return render_template('bibliometa/seabook.html')
+    #if 'nome' not in session:
+        #return redirect(url_for('login'))
     if request.method == 'POST':
         parametro = request.form.get('parametro', '')
         resultado_livros = busca_livro(parametro)
         if resultado_livros:
-            return render_template('busca_livro.html', resultado_livros=resultado_livros, parametro=parametro)
+            return render_template('seabook.html', resultado_livros=resultado_livros, parametro=parametro)
         else:
-            return render_template('busca_livro.html', erro="Nenhum livro encontrado ou erro na busca.")
-    return render_template('bibliometa/busca_livro.html')
-
+            return render_template('seabook.html', erro="Nenhum livro encontrado ou erro na busca.")
+        
+    
+ 
 @app.route("/logout")
 
 def logout():
     return render_template('bibliometa/logout.html')
+
+@app.route("/forgot")
+
+def forgot():
+    return render_template('bibliometa/forgot.html')

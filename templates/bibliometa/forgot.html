@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/forgot.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h2>RECUPERAR SENHA</h2>
+        <p>Informe seu e-mail</p>
+        <form class="recuperar-form">
+            <div class="input-box">
+                <input type="email" placeholder="Digite seu e-mail" required>
+            </div>
+            <button type="submit">Enviar link</button>
+            <a href="http://127.0.0.1:5000/login" class="voltar-login">RETORNAR</a>
+        </form>
+    </div>
+</body>
+</html>

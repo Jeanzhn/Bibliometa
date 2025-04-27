@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Special Gothic Condensed One", sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+header {
+    background-color: #c68545;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.container {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px 0 0 8px;
+}
+
+.search-bar button {
+    padding: 0.6rem 1rem;
+    border: none;
+    background-color: #c68545;
+    color: white;
+    font-size: 1rem;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+}
+
+.buttons {
+    margin-bottom: 2rem;
+}
+
+.buttons button {
+    margin-right: 1rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #165e27;
+    color: white;
+    transition: 0.3s;
+}
+
+.buttons button.remove {
+    background-color: #97242f;
+}
+
+.buttons button:hover {
+    opacity: 0.9;
+}
+
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.book-card {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-card h3 {
+    margin-top: 0;
+}
+
+.book-card p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.logout-btn {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.form-livro {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.form-livro form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-livro input,
+.form-livro button {
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.select-book {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
+}
+
+.confirm-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #165e27; /* verde */
+    color: white;
+    cursor: pointer;
+  }
+  
+  .confirm-btn:hover {
+    background-color: #165e27;
+  }
+  
+  .cancel-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #97242f;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #97242f;
+  }

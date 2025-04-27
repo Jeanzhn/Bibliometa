@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biblioteca - Lista de Livros</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/book.css')}}">
+</head>
+
+<body>
+  <header>
+    <h1>MINHA BIBLIOTECA</h1>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <div class="container">
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar livro..." id="searchInput" />
+      <button onclick="searchBook()">Buscar</button>
+    </div>
+
+    <div class="buttons">
+      <button onclick="mostrarFormulario()">Adicionar livro</button>
+      <button class="remove" onclick="toggleRemoveMode()">Remover livro</button>
+    </div>
+
+    <div id="formularioLivro" class="form-livro" style="display: none;">
+      <form onsubmit="addBook(event)">
+        <input type="text" id="titulo" placeholder="Título do Livro" required />
+        <input type="text" id="autor" placeholder="Autor" required />
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
+
+    <div id="confirmDelete" class="confirm-delete" style="display: none;">
+        <button class="confirm-btn" onclick="deleteSelectedBooks()">Confirmar remoção</button>
+        <button class="cancel-btn" onclick="cancelDelete()">Cancelar</button>
+      </div>
+      
+
+    <div class="book-list" id="bookList"></div>
+  </div>
+
+  <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+
+</body>
+</html>
