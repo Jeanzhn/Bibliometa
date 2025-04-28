@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "jean": {
         "senha": "121212",
         "email": "a",
@@ -11,4 +12,22 @@
         "id_membro": 2,
         "historico_emprestimos": []
     }
+=======
+    "membros": [
+        {
+            "nome": "Jean",
+            "senha": "121212",
+            "email": "a",
+            "id_membro": 1,
+            "historico_emprestimos":[]
+        },
+        {
+            "nome": "Lucas",
+            "senha": "232323",
+            "email": "b",
+            "id_membro": 1,
+            "historico_emprestimos":[]
+        }
+    ]
+>>>>>>> 1e2e812574405ef881ee2d99d2c854746fd86e9c
 }

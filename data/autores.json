@@ -2,7 +2,13 @@
     "Autores":[
         {
             "id_autor": 1 ,
+<<<<<<< HEAD
             "nome": "nome",
+=======
+            "nome": {},
+            "idade": {},
+            "nacionalidade": {},
+>>>>>>> 1e2e812574405ef881ee2d99d2c854746fd86e9c
             "livros": [1]
         }
     ]
