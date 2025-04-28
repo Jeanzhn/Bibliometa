@@ -1,18 +1,14 @@
 {
-    "membros": [
-        {
-            "nome": "Jean",
-            "senha": "121212",
-            "email": "a",
-            "id_membro": 1,
-            "historico_emprestimos":[]
-        },
-        {
-            "nome": "Lucas",
-            "senha": "232323",
-            "email": "b",
-            "id_membro": 1,
-            "historico_emprestimos":[]
-        }
-    ]
+    "jean": {
+        "senha": "121212",
+        "email": "a",
+        "id_membro": 1,
+        "historico_emprestimos": []
+    },
+    "jucas": {
+        "senha": "232323",
+        "email": "b",
+        "id_membro": 2,
+        "historico_emprestimos": []
+    }
 }

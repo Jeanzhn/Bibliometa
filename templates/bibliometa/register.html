@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro</title>
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/register.css')}}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/register.css')}}">
 </head>
+
 <body>
     <main class="container">
-        <form id="registerForm" action="/seabook" method="POST">
+        <form id="registerForm" action="{{url_for('seabook')}}" method="POST">
             <h1>CADASTRE-SE</h1>
 
             <div class="input-box">
@@ -25,11 +27,12 @@
             </div>
 
             <div class="input-box">
-                <input id="confirmar_senha" name="confirmar_senha" type="password" placeholder="Confirmar senha" required>
+                <input id="confirmar_senha" name="confirmar_senha" type="password" placeholder="Confirmar senha"
+                    required>
             </div>
-            
+
             <button type="submit" class="register-btn" id="cadastrarBtn" disabled>Cadastrar</button>
-            
+
             <div class="login-link">
                 <p> <a href="http://127.0.0.1:5000/login">Já possui uma conta?</a></p>
             </div>
@@ -38,5 +41,5 @@
     </main>
     <script src="{{ url_for('static', filename='js/registro.js') }}"></script>
 </body>
-</html>
 
+</html>

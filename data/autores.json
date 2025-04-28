@@ -2,9 +2,7 @@
     "Autores":[
         {
             "id_autor": 1 ,
-            "nome": {},
-            "idade": {},
-            "nacionalidade": {},
+            "nome": "nome",
             "livros": [1]
         }
     ]
