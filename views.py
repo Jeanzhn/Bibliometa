@@ -37,7 +37,7 @@ def register():
         historico_emprestimo = []
         id_membro = str(uuid.uuid4())
         
-        users = To_json.load_users('data/users.json')
+        new_user = To_json.load_users('data/users.json')
         
         if not all([nome, email, senha, confirmar_senha]):
             return "Preencha todos os campos!", 400
@@ -45,23 +45,29 @@ def register():
         if senha != confirmar_senha:
             return "As senhas não coincidem!", 400
         
-        if nome in users:
+        if nome in new_user:
             return render_template('bibliometa/login.html', register_error="Usuário já existe", show_register=True)
         
-        if senha in users:
+        if senha in new_user:
             return render_template('bibliometa/login.html', register_error="Esta senha ja existekkkkkkkkkk foi mal perdi a linha", show_register=True)
         
-        session['nome'] = nome
-        users[nome] = {'senha': senha, 'email': email, 'id_membro' : id_membro, 'historico_emprestimos': historico_emprestimo}
-        To_json.save_users('data/users.json' , users)
+        new_user[nome] = {
+            'senha': senha, 
+            'email': email, 
+            'id_membro' : id_membro, 
+            'historico_emprestimos': historico_emprestimo
+            }
         
+        To_json.save_users(new_user, 'data/users.json')
+
+        session['nome'] = nome
         return render_template('bibliometa/seabook.html', )
     
     return render_template('bibliometa/register.html', nome_usuario=session.get('nome'))
 
 @app.route("/seabook", methods=['GET', 'POST'])
  
-def seabook():
+def seabook(): 
     if 'nome' not in session:
         return redirect(url_for('login'))
     if request.method == 'POST':

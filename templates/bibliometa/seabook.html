@@ -17,8 +17,8 @@
   <form id="seabiblioteca" action="/seabook" method="POST">
     <div class="container">
       <div class="search-bar">
-        <input name = "parametro" type="text" placeholder="Buscar livro..." id="searchInput" />
-        <button type ="submit" >Buscar</button>
+        <input name="parametro" type="text" placeholder="Buscar livro..." id="searchInput" />
+        <button type="submit">Buscar</button>
       </div>
 
       <div class="buttons">
@@ -59,8 +59,6 @@
     <p class="empty-message">Seu livro aparecerá aqui.</p>
     {% endif %}
   </section>
-  </div>
-
   <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
 
 </body>
