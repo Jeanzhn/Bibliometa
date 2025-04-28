@@ -2,11 +2,7 @@ from pessoa import Pessoa
 
 class Membro(Pessoa):
     def __init__(self, id_membro, historico_emprestimos):
-<<<<<<< HEAD
         super().__init__(nome, tipo)
-=======
-        super().__init__(nome, idade, tipo)
->>>>>>> 1e2e812574405ef881ee2d99d2c854746fd86e9c
         self.id_membro = id_membro
         self.historico_emprestimos = []
     
@@ -24,12 +20,4 @@ class Membro(Pessoa):
             'data_emprestimo': data_emprestimo
         }
         self.historico_emprestimos.append(emprestimo)
-<<<<<<< HEAD
-=======
-        
-    def exibir_informacoes_membro(self): 
-        print(f"Nome: {self.nome}")
-        print(f"ID do Membro: {self.id_membro}")
-        print(f"Histórico de Empréstimos:{self.emprestimo}")
->>>>>>> 1e2e812574405ef881ee2d99d2c854746fd86e9c
         

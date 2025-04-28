@@ -37,7 +37,7 @@ def register():
         historico_emprestimo = []
         id_membro = str(uuid.uuid4())
         
-        users = To_json.load_users('data/teste.json')
+        users = To_json.load_users('data/users.json')
         
         if not all([nome, email, senha, confirmar_senha]):
             return "Preencha todos os campos!", 400
@@ -53,7 +53,7 @@ def register():
         
         session['nome'] = nome
         users[nome] = {'senha': senha, 'email': email, 'id_membro' : id_membro, 'historico_emprestimo': historico_emprestimo}
-        To_json.save_object(users, 'data/teste.json')
+        To_json.save_object(users, 'data/users.json')
         
         return render_template('bibliometa/seabook.html', )
     
