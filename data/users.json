@@ -4,5 +4,11 @@
         "email": "email",
         "id_membro": "id_membro",
         "historico_emprestimos": []
+    },
+    "jean" : {
+        "senha": "121212",
+        "email": "as",
+        "id_membro": "12",
+        "historico_emprestimos": []
     }
 }

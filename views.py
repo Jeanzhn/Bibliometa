@@ -67,7 +67,7 @@ def seabook():
     if request.method == 'POST':
         busca = request.form.get('parametro')
         try:
-            resultado_livros = Livro.busca_info_livro(busca)
+            resultado_livros = Livro.buscar_info_livro(busca)
             if resultado_livros:
                 return render_template('bibliometa/seabook.html', livros = [resultado_livros], busca=busca)
             else:

@@ -1,12 +1,18 @@
-{
-    "livros": [
-        {
-            "titulo": "O Senhor dos Anéis",
-            "autor": "J. R. R. Tolkien",
-            "editora": "Martins Fontes",
-            "ano": 2000,
-            "isbn": 1,
-            "disponivel": false
-        }
-    ]
-}
+[
+    {
+        "titulo": "Google Hacking for Penetration Testers",
+        "autor": "Bill Gardner",
+        "editora": "Elsevier",
+        "ano": "2011-04-18",
+        "isbn": "9780080484266",
+        "disponivel": true
+    },
+    {
+        "titulo": "Harry Potter e a Pedra Filosofal",
+        "autor": "J.K. Rowling",
+        "editora": "Pottermore Publishing",
+        "ano": "2015-12-08",
+        "isbn": "9781781103685",
+        "disponivel": true
+    }
+]
