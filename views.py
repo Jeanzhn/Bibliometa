@@ -52,8 +52,8 @@ def register():
             return render_template('bibliometa/login.html', register_error="Esta senha ja existekkkkkkkkkk foi mal perdi a linha", show_register=True)
         
         session['nome'] = nome
-        users[nome] = {'senha': senha, 'email': email, 'id_membro' : id_membro, 'historico_emprestimo': historico_emprestimo}
-        To_json.save_object(users, 'data/users.json')
+        users[nome] = {'senha': senha, 'email': email, 'id_membro' : id_membro, 'historico_emprestimos': historico_emprestimo}
+        To_json.save_users('data/users.json' , users)
         
         return render_template('bibliometa/seabook.html', )
     

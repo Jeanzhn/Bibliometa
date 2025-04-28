@@ -14,5 +14,13 @@
         "ano": "2015-12-08",
         "isbn": "9781781103685",
         "disponivel": true
+    },
+    {
+        "titulo": "Mogli",
+        "autor": "Rudyard Kipling",
+        "editora": "WWF Martins Fontes",
+        "ano": "2016-04-13",
+        "isbn": "9788546900428",
+        "disponivel": true
     }
 ]
