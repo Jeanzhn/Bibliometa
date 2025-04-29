@@ -1,8 +1,14 @@
 {
-    "jean" : {
+    "jean": {
         "senha": "121212",
         "email": "as",
         "id_membro": "12",
+        "historico_emprestimos": []
+    },
+    "martel": {
+        "senha": "1111",
+        "email": "enrique@meta.edu.br",
+        "id_membro": "84a02671-ea4b-4561-9ce2-3e990719e1cc",
         "historico_emprestimos": []
     }
 }

@@ -3,17 +3,33 @@ from model.to_json import To_json
 from model.livro import Livro
 from main import app
 import uuid
+import logging
+import sys
+
+# Cria um handler para o console (StreamHandler)
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.DEBUG)  # Define o nível mínimo de log para este handler
+
+# Cria um formatter para o log
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+
+# Adiciona o handler ao logger da aplicação Flask
+app.logger.addHandler(console_handler)
+app.logger.setLevel(logging.DEBUG)  # Define o nível mínimo de log para o logger da aplicação
+
 
 @app.route("/")
-
 def homepage():
-    return render_template('base.html')
+    app.logger.info("passando pela Home")
+    """Renderiza a página inicial da aplicação."""
+    return render_template('index.html')
 
 @app.route("/login", methods=['GET', 'POST'])
-
 def login():
     if request.method == 'POST':
         nome = request.form.get('nome').lower()
+        app.logger.debug("Nome do forms:"+nome)
         senha = request.form.get('senha')
         
         users = To_json.load_users('data/users.json')
@@ -27,46 +43,55 @@ def login():
     return render_template('bibliometa/login.html')
 
 @app.route("/register", methods=['GET', 'POST'])
-
 def register():
+    """
+    Handles user registration.
+
+    If the request method is POST, it validates the submitted form data,
+    checks for existing users, saves the new user to the database,
+    and redirects the user to the login page.
+
+    If the request method is GET, it renders the registration form.
+    """
     if request.method == 'POST':
         nome = request.form.get('nome')
+        app.logger.debug("Nome do forms:"+nome)
         email = request.form.get('email')
+        app.logger.debug("Email do forms:"+email)
         senha = request.form.get('senha')
+        app.logger.debug("Senha do forms:"+senha)
         confirmar_senha = request.form.get('confirmar_senha')
+        app.logger.debug("Confirmar senha do forms:"+confirmar_senha)
         historico_emprestimo = []
         id_membro = str(uuid.uuid4())
-        
+
         new_user = To_json.load_users('data/users.json')
-        
+
         if not all([nome, email, senha, confirmar_senha]):
             return "Preencha todos os campos!", 400
-        
+
         if senha != confirmar_senha:
             return "As senhas não coincidem!", 400
-        
+
         if nome in new_user:
             return render_template('bibliometa/login.html', register_error="Usuário já existe", show_register=True)
-        
-        if senha in new_user:
-            return render_template('bibliometa/login.html', register_error="Esta senha ja existekkkkkkkkkk foi mal perdi a linha", show_register=True)
-        
+
         new_user[nome] = {
-            'senha': senha, 
-            'email': email, 
-            'id_membro' : id_membro, 
+            'senha': senha,
+            'email': email,
+            'id_membro': id_membro,
             'historico_emprestimos': historico_emprestimo
-            }
-        
+        }
+
         To_json.save_users(new_user, 'data/users.json')
 
-        session['nome'] = nome
-        return render_template('bibliometa/seabook.html', )
-    
-    return render_template('bibliometa/register.html', nome_usuario=session.get('nome'))
+        # Redireciona para a página de login com uma mensagem de sucesso
+        return redirect(url_for('login', registration_success=True))
+
+    # Renderiza o formulário de registro para requisições GET
+    return render_template('bibliometa/register.html')
 
 @app.route("/seabook", methods=['GET', 'POST'])
- 
 def seabook(): 
     if 'nome' not in session:
         return redirect(url_for('login'))
