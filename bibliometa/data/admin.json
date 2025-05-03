@@ -1,0 +1,7 @@
+{
+    "admin": {
+            "nome": "admin",
+            "senha": "000000",
+            "id_admin": 1
+        }
+}

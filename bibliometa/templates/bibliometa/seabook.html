@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca - Lista de Livros</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/book.css')}}">
+</head>
+
+<body>
+  <header>
+    <h1>MINHA BIBLIOTECA, BEM VINDO {{ nome_usuario }}</h1>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <form id="seabiblioteca" action="/seabook" method="POST">
+    <div class="container">
+      <div class="search-bar">
+        <input name="parametro" type="text" placeholder="Buscar livro..." id="searchInput" />
+        <button type="submit">Buscar</button>
+      </div>
+
+      <div class="buttons">
+        <button onclick="mostrarFormulario()">Adicionar livro</button>
+        <button class="remove" onclick="toggleRemoveMode()">Remover livro</button>
+      </div>
+
+      <div id="formularioLivro" class="form-livro" style="display: none;">
+        <form onsubmit="addBook(event)">
+          <input type="text" id="titulo" placeholder="Título do Livro" required />
+          <input type="text" id="autor" placeholder="Autor" required />
+          <button type="submit">Salvar</button>
+        </form>
+      </div>
+  </form>
+  <div id="confirmDelete" class="confirm-delete" style="display: none;">
+    <button class="confirm-btn" onclick="deleteSelectedBooks()">Confirmar remoção</button>
+    <button class="cancel-btn" onclick="cancelDelete()">Cancelar</button>
+  </div>
+
+  <section class="results" id="bookList">
+
+    {% if erro %}
+    <div class="error-message">{{ erro }}</div>
+    {% elif livros %}
+
+    <h2 class="results__title">Resultados da Busca</h2>
+    {% for livro in livros %}
+    <article class="book-card">
+      <h3 class="book-card__title">{{ livro.titulo }}</h3>
+      <p class="book-card__info"><strong>Autor:</strong> {{ livro.autor }}</p>
+      <p class="book-card__info"><strong>Editora:</strong> {{ livro.editora }}</p>
+      <p class="book-card__info"><strong>Ano:</strong> {{ livro.ano }}</p>
+      <p class="book-card__info"><strong>ISBN:</strong> {{ livro.isbn }}</p>
+    </article>
+    {% endfor %}
+    {% else %}
+    <p class="empty-message">Seu livro aparecerá aqui.</p>
+    {% endif %}
+  </section>
+  <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+
+</body>
+
+</html>

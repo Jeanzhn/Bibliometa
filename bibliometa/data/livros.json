@@ -1,0 +1,50 @@
+[
+    {
+        "titulo": "Google Hacking for Penetration Testers",
+        "autor": "Bill Gardner",
+        "editora": "Elsevier",
+        "ano": "2011-04-18",
+        "isbn": "9780080484266",
+        "disponivel": true
+    },
+    {
+        "titulo": "Harry Potter e a Pedra Filosofal",
+        "autor": "J.K. Rowling",
+        "editora": "Pottermore Publishing",
+        "ano": "2015-12-08",
+        "isbn": "9781781103685",
+        "disponivel": true
+    },
+    {
+        "titulo": "Mogli",
+        "autor": "Rudyard Kipling",
+        "editora": "WWF Martins Fontes",
+        "ano": "2016-04-13",
+        "isbn": "9788546900428",
+        "disponivel": true
+    },
+    {
+        "titulo": "A Casa Velha",
+        "autor": "Alex Sampaio",
+        "editora": "Clube de Autores",
+        "ano": "2015-12-28",
+        "isbn": "PKEY:CLDEAU1690",
+        "disponivel": true
+    },
+    {
+        "titulo": "The Sherlock Holmes Mysteries: All 4 novels & 56 Short Stories in One Edition",
+        "autor": "Arthur Conan Doyle",
+        "editora": "e-artnow",
+        "ano": "2017-12-06",
+        "isbn": "9788027236183",
+        "disponivel": true
+    },
+    {
+        "titulo": "50 Poemas Em Tons De Cinza",
+        "autor": "Arys Gaiovani",
+        "editora": "Clube de Autores",
+        "ano": "2016-02-25",
+        "isbn": "PKEY:CLDEAU27698",
+        "disponivel": true
+    }
+]
