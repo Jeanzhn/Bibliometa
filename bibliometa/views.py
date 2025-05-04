@@ -84,7 +84,8 @@ def register():
         }
 
         To_json.save_users(new_user, 'data/users.json')
-
+        
+        session['nome']=nome
         # Redireciona para a página de login com uma mensagem de sucesso
         return redirect(url_for('login', registration_success=True))
 
@@ -100,7 +101,7 @@ def seabook():
         try:
             resultado_livros = Livro.buscar_info_livro(busca)
             if resultado_livros:
-                return render_template('bibliometa/seabook.html', livros = [resultado_livros], busca=busca)
+                return render_template('bibliometa/seabook.html', livros = [resultado_livros], busca=busca) 
             else:
                 return render_template('bibliometa/seabook.html', erro="Nenhum livro encontrado ou erro na busca.")
         except Exception as e:
@@ -117,3 +118,11 @@ def logout():
 
 def forgot():
     return render_template('bibliometa/forgot.html')
+
+@app.route("/lists" , methods=['GET', 'POST'])
+def lists():
+    if request.method == 'POST':
+       listarUsers = To_json.load_users('data/users.json')
+       listarBook = To_json.load_users('data/livros.json')
+    
+    return render_template('bibliometa/lists.html', listarBook=[listarBook], listarUsers=[listarUsers])

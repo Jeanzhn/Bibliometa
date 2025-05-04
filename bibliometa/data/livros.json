@@ -46,5 +46,37 @@
         "ano": "2016-02-25",
         "isbn": "PKEY:CLDEAU27698",
         "disponivel": true
+    },
+    {
+        "titulo": "Minha culpa?",
+        "autor": "Bruna Ester Yamashita",
+        "editora": "EDUEL",
+        "ano": "2023-08-18",
+        "isbn": "9786589814962",
+        "disponivel": true
+    },
+    {
+        "titulo": "The Art of the Flask",
+        "autor": "Paul Knorr",
+        "editora": "Cider Mill Press",
+        "ano": "2017-06-13",
+        "isbn": "9781604336986",
+        "disponivel": true
+    },
+    {
+        "titulo": "Harry Potter and the Sorcerer's Stone",
+        "autor": "J.K. Rowling",
+        "editora": "Pottermore Publishing",
+        "ano": "2015-12-08",
+        "isbn": "9781781100486",
+        "disponivel": true
+    },
+    {
+        "titulo": "Carros (Cars)",
+        "autor": "Charles Reasoner",
+        "editora": "Britannica Digital Learning",
+        "ano": "2013-03-01",
+        "isbn": "9781615357482",
+        "disponivel": true
     }
 ]

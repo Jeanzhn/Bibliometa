@@ -16,12 +16,12 @@ class Livro:
             print(f"O livro '{self.titulo}' foi emprestado.")
         else:
             print(f"O livro '{self.titulo}' não está disponível para empréstimo.")
-            
+                  
     @staticmethod
     def buscar_info_livro(parametro):
         requisicao = requests.get(f'https://www.googleapis.com/books/v1/volumes?q=intitle:{parametro}')
         try:
-            livro = Livro(
+            newlivro = Livro(
                     titulo = requisicao.json()['items'][0]['volumeInfo']['title'],
                     autor= requisicao.json()['items'][0]['volumeInfo']['authors'][0],
                     editora= requisicao.json()['items'][0]['volumeInfo']['publisher'],
@@ -29,8 +29,15 @@ class Livro:
                     isbn = requisicao.json()['items'][0]['volumeInfo']['industryIdentifiers'][0]['identifier'],
                     disponivel= True
                     )
-            To_json.save_object(livro, 'data/livros.json')
-            return livro
+            jalivros = To_json.load_users('data/livros.json')
+            for livro in jalivros:
+                if newlivro not in jalivros:
+                    To_json.save_object(newlivro, 'data/livros.json')
+                    return newlivro
+            else: 
+                for livro in jalivros:
+                    if livro[newlivro] == jalivros[newlivro]:
+                        return jalivros[newlivro]
         except requests.exceptions.RequestException as e:
             print(f"Erro na requisição: {e}")
             return None

@@ -12,6 +12,7 @@
   <header>
     <h1>MINHA BIBLIOTECA, BEM VINDO {{ nome_usuario }}</h1>
     <button class="logout-btn" onclick="logout()">Logout</button>
+    <button class="lists-btn" onclick="lists()">Listas e relatorios</button>
   </header>
 
   <form id="seabiblioteca" action="/seabook" method="POST">
@@ -44,16 +45,17 @@
     {% if erro %}
     <div class="error-message">{{ erro }}</div>
     {% elif livros %}
-
+    
     <h2 class="results__title">Resultados da Busca</h2>
     {% for livro in livros %}
-    <article class="book-card">
-      <h3 class="book-card__title">{{ livro.titulo }}</h3>
-      <p class="book-card__info"><strong>Autor:</strong> {{ livro.autor }}</p>
-      <p class="book-card__info"><strong>Editora:</strong> {{ livro.editora }}</p>
-      <p class="book-card__info"><strong>Ano:</strong> {{ livro.ano }}</p>
-      <p class="book-card__info"><strong>ISBN:</strong> {{ livro.isbn }}</p>
-    </article>
+      <article class="book-card">
+        <h3 class="book-card__title">{{ livro.titulo }}</h3>
+        <p class="book-card__info"><strong>Autor:</strong> {{ livro.autor }}</p>
+        <p class="book-card__info"><strong>Editora:</strong> {{ livro.editora }}</p>
+        <p class="book-card__info"><strong>Ano:</strong> {{ livro.ano }}</p>
+        <p class="book-card__info"><strong>ISBN:</strong> {{ livro.isbn }}</p>
+        <p class="book-card__info"><strong>Disponivel:</strong>{{ livro.disponivel}}</p>
+      </article>
     {% endfor %}
     {% else %}
     <p class="empty-message">Seu livro aparecerá aqui.</p>

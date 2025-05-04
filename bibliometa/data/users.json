@@ -10,5 +10,23 @@
         "email": "enrique@meta.edu.br",
         "id_membro": "84a02671-ea4b-4561-9ce2-3e990719e1cc",
         "historico_emprestimos": []
+    },
+    "Mylena": {
+        "senha": "232323",
+        "email": "vieragust@gmail.com",
+        "id_membro": "37dc8e7b-d8b2-4cc4-a2f0-f622434684e0",
+        "historico_emprestimos": []
+    },
+    "felipe": {
+        "senha": "232323",
+        "email": "vigut@gmail.com",
+        "id_membro": "96aaeb1d-3baa-46e2-be77-d4461fea6fb0",
+        "historico_emprestimos": []
+    },
+    "Gustavo": {
+        "senha": "565656",
+        "email": "vitor@gmail.com",
+        "id_membro": "b2a93e00-e621-4570-a255-da3d5fe7c237",
+        "historico_emprestimos": []
     }
 }

@@ -1,0 +1,40 @@
+<div class="container", method= 'POST'>
+    <button id="show-users-list">Mostrar Lista de Usuários</button>
+    <button id="show-books-list">Mostrar Lista de Livros</button>
+    <button id="seabook-button">Ir para Seabook</button>
+    <div id="users-list" style="display: none;">
+        <h2>Lista de Usuários</h2>
+          {%for user in listarUsers%}
+            <div class="user-card">
+                <h3 class="user-card__name">{{ listarUsers[user].nome }}</h3>
+                <p class="user-card__info"><strong>Email:</strong>{{listarUsers[user].email }}</p>
+                <p class="user-card__info"><strong>Id:</strong> {{ listarUsers[user].id_membro }}</p>
+            </div>
+        
+          {%endfor%}
+    </div>
+    <div id="books-list" style="display: none;">
+        <h2>Lista de Livros</h2>
+          {% for livro in listarBooks %}
+            <div class="book-card">
+              <h3 class="book-card__title">{{ livro.titulo }}</h3>
+              <p class="book-card__info"><strong>Autor:</strong>{{livro.autor }}</p>
+              <p class="book-card__info"><strong>Editora:</strong>{{livro.editora}}</p>
+              <p class="book-card__info"><strong>Ano:</strong> {{ livro.ano }}</p>
+              <p class="book-card__info"><strong>ISBN:</strong> {{ livro.isbn }}</p>
+              <p class="book-card__info"><strong>Disponivel:</strong>{{livro.disponivel}}</p> 
+            </div>
+          {% endfor %}
+    </div>
+</div>
+<script>
+    document.getElementById('show-users-list').addEventListener('click', function() {
+        document.getElementById('users-list').style.display = 'block';
+    });
+    document.getElementById('show-books-list').addEventListener('click', function() {
+        document.getElementById('books-list').style.display = 'block';
+    });
+    document.getElementById('seabook-button').addEventListener('click', function() {
+        window.location.href = '/seabook';
+    });
+</script>

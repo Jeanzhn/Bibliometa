@@ -7,7 +7,11 @@ function login() {
 }
 
 function register() {
-  window.location.href = "/register";
+  window.location.href = "/login";
+}
+
+function lists(){
+  window.location.href="/lists";
 }
 
 function searchBook() {
