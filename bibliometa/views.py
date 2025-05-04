@@ -121,8 +121,6 @@ def forgot():
 
 @app.route("/lists" , methods=['GET', 'POST'])
 def lists():
-    if request.method == 'POST':
-       listarUsers = To_json.load_users('data/users.json')
-       listarBook = To_json.load_users('data/livros.json')
-    
-    return render_template('bibliometa/lists.html', listarBook=[listarBook], listarUsers=[listarUsers])
+    listarUsers = To_json.load_users('data/users.json')
+    listarBook = To_json.load_users('data/livros.json')
+    return render_template('bibliometa/lists.html', listarBooks=listarBook, listarUsers=listarUsers)

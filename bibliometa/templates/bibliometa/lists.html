@@ -4,14 +4,13 @@
     <button id="seabook-button">Ir para Seabook</button>
     <div id="users-list" style="display: none;">
         <h2>Lista de Usuários</h2>
-          {%for user in listarUsers%}
+          {% for user, info in listarUsers.items() %}
             <div class="user-card">
-                <h3 class="user-card__name">{{ listarUsers[user].nome }}</h3>
-                <p class="user-card__info"><strong>Email:</strong>{{listarUsers[user].email }}</p>
-                <p class="user-card__info"><strong>Id:</strong> {{ listarUsers[user].id_membro }}</p>
+                <h3 class="user-card__name">{{ user }}</h3>
+                <p class="user-card__info"><strong>Email:</strong> {{ info.email }}</p>
+                <p class="user-card__info"><strong>Id:</strong> {{ info.id_membro }}</p>
             </div>
-        
-          {%endfor%}
+          {% endfor %}
     </div>
     <div id="books-list" style="display: none;">
         <h2>Lista de Livros</h2>
