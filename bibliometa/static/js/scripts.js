@@ -49,22 +49,21 @@ function cancelDelete() {
   toggleRemoveMode();
 }
 
-function toggleBorrowConfirm(button) {
+function emprestarConfirm(button) {
   const confirmDiv = button.nextElementSibling;
   button.style.display = 'none';
   confirmDiv.style.display = 'block';
 }
 
-function confirmBorrow(button) {
+function confirmEmpresta(button) {
   const bookCard = button.closest('.book-card');
   const titulo = bookCard.querySelector('.book-card__title').textContent;
-  // Aqui você pode adicionar a lógica para registrar o empréstimo
   alert(`Livro "${titulo}" emprestado com sucesso!`);
   location.reload();
 }
 
-function cancelBorrow(button) {
-  const confirmDiv = button.closest('.confirm-borrow');
+function cancelEmpresta(button) {
+  const confirmDiv = button.closest('.confirm-emprestar');
   const borrowBtn = confirmDiv.previousElementSibling;
   confirmDiv.style.display = 'none';
   borrowBtn.style.display = 'block';

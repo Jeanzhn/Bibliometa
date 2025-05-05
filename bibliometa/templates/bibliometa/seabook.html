@@ -58,10 +58,10 @@
           <p class="book-card__info"><strong>ISBN:</strong> {{ livro.isbn }}</p>
           <p class="book-card__info"><strong>Disponível:</strong> {{ livro.disponivel }}</p>
           {% if livro.disponivel %}
-          <button class="borrow-btn" onclick="toggleBorrowConfirm(this)">Emprestar</button>
-          <div class="confirm-borrow" style="display: none;">
-            <button class="confirm-btn" onclick="confirmBorrow(this)">Confirmar empréstimo</button>
-            <button class="cancel-btn" onclick="cancelBorrow(this)">Cancelar</button>
+          <button class="emprestar-btn" onclick="emprestarConfirm(this)">Emprestar</button>
+          <div class="confirm-emprestar" style="display: none;">
+            <button class="confirm-btn" onclick="confirmEmpresta(this)">Confirmar empréstimo</button>
+            <button class="cancel-btn" onclick="cancelEmpresta(this)">Cancelar</button>
           </div>
           {% else %}
           <p class="book-card__info book-card__info--error"><strong>Emprestado:</strong> Livro já alugado</p>
