@@ -58,8 +58,24 @@ function emprestarConfirm(button) {
 function confirmEmpresta(button) {
   const bookCard = button.closest('.book-card');
   const titulo = bookCard.querySelector('.book-card__title').textContent;
-  alert(`Livro "${titulo}" emprestado com sucesso!`);
-  location.reload();
+  const isbn = bookCard.querySelector('[data-isbn]').getAttribute('data-isbn');
+  
+  fetch('/emprestar', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ titulo: titulo, isbn: isbn })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if(data.success) {
+      alert(`Livro "${titulo}" emprestado com sucesso!`);
+      location.reload();
+    } else {
+      alert('Erro ao emprestar livro');
+    }
+  });
 }
 
 function cancelEmpresta(button) {

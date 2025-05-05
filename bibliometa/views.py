@@ -1,4 +1,5 @@
 from flask import render_template, request, redirect, url_for, session, jsonify
+from datetime import datetime
 from model.to_json import To_json
 from model.livro import Livro
 from main import app
@@ -123,6 +124,36 @@ def seabook():
             return render_template('bibliometa/seabook.html', erro=f"Erro ao buscar livros: {e}")
     return render_template('bibliometa/seabook.html', nome_usuario=session.get('nome'), tipoUser=request.args.get('tipoUser'))    
  
+@app.route("/emprestar", methods=['POST'])
+def emprestar():
+    if 'nome' not in session:
+        return jsonify({'success': False, 'error': 'Usuário não logado'})
+    
+    data = request.json
+    titulo = data.get('titulo')
+    isbn = data.get('isbn')
+    
+    # Atualizar disponibilidade do livro
+    livros = To_json.load_users('data/livros.json')
+    for livro in livros:
+        if livro['titulo'] == titulo and livro['isbn'] == isbn:
+            livro['disponivel'] = False
+            To_json.save_users(livros, 'data/livros.json')
+            
+            # Adicionar ao histórico do usuário
+            users = To_json.load_users('data/users.json')
+            if session['nome'] in users:
+                if 'historico_emprestimos' not in users[session['nome']]:
+                    users[session['nome']]['historico_emprestimos'] = []
+                users[session['nome']]['historico_emprestimos'].append({
+                    'titulo_livro': titulo,
+                    'data_emprestimo': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                })
+                To_json.save_users(users, 'data/users.json')
+                return jsonify({'success': True})
+    
+    return jsonify({'success': False, 'error': 'Livro não encontrado'})
+
 @app.route("/logout")
 
 def logout():

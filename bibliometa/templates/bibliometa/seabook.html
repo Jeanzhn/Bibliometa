@@ -55,7 +55,7 @@
           <p class="book-card__info"><strong>Autor:</strong> {{ livro.autor }}</p>
           <p class="book-card__info"><strong>Editora:</strong> {{ livro.editora }}</p>
           <p class="book-card__info"><strong>Ano:</strong> {{ livro.ano }}</p>
-          <p class="book-card__info"><strong>ISBN:</strong> {{ livro.isbn }}</p>
+          <p class="book-card__info"><strong>ISBN:</strong> <span data-isbn="{{ livro.isbn }}">{{ livro.isbn }}</span></p>
           <p class="book-card__info"><strong>Disponível:</strong> {{ livro.disponivel }}</p>
           {% if livro.disponivel %}
           <form id="emprestarForm" action="/seabook" method="POST">
