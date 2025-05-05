@@ -1,6 +1,7 @@
 from model.to_json import To_json
 import requests
 
+
 class Livro:
     def __init__(self, titulo, autor, editora, ano, isbn, disponivel):
         self.titulo = titulo
@@ -9,14 +10,7 @@ class Livro:
         self.ano = ano
         self.isbn = isbn
         self.disponivel = disponivel
-
-    def emprestar(self):
-        if self.disponivel:
-            self.disponivel = False
-            print(f"O livro '{self.titulo}' foi emprestado.")
-        else:
-            print(f"O livro '{self.titulo}' não está disponível para empréstimo.")
-                  
+        
     @staticmethod
     def buscar_info_livro(parametro):
         requisicao = requests.get(f'https://www.googleapis.com/books/v1/volumes?q=intitle:{parametro}')

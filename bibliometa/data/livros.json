@@ -94,5 +94,13 @@
         "ano": "2021-01-01",
         "isbn": "9788867522422",
         "disponivel": true
+    },
+    {
+        "titulo": "None of This Is True",
+        "autor": "Lisa Jewell",
+        "editora": "Simon and Schuster",
+        "ano": "2023-08-08",
+        "isbn": "9781668024287",
+        "disponivel": true
     }
 ]
