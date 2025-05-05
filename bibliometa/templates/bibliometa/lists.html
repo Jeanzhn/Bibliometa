@@ -1,39 +1,79 @@
-<div class="container", method= 'POST'>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/lists.css')}}"
+</head>
+<body>
+<div class="container" method="POST">
     <button id="show-users-list">Mostrar Lista de Usuários</button>
     <button id="show-books-list">Mostrar Lista de Livros</button>
     <button id="seabook-button">Ir para Seabook</button>
     <div id="users-list" style="display: none;">
         <h2>Lista de Usuários</h2>
-          {% for user, info in listarUsers.items() %}
-            <div class="user-card">
-                <h3 class="user-card__name">{{ user }}</h3>
-                <p class="user-card__info"><strong>Email:</strong> {{ info.email }}</p>
-                <p class="user-card__info"><strong>Id:</strong> {{ info.id_membro }}</p>
-            </div>
-          {% endfor %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user, info in listarUsers.items() %}
+                <tr>
+                    <td>{{ user }}</td>
+                    <td>{{ info.email }}</td>
+                    <td>{{ info.id_membro }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     <div id="books-list" style="display: none;">
         <h2>Lista de Livros</h2>
-          {% for livro in listarBooks %}
-            <div class="book-card">
-              <h3 class="book-card__title">{{ livro.titulo }}</h3>
-              <p class="book-card__info"><strong>Autor:</strong>{{livro.autor }}</p>
-              <p class="book-card__info"><strong>Editora:</strong>{{livro.editora}}</p>
-              <p class="book-card__info"><strong>Ano:</strong> {{ livro.ano }}</p>
-              <p class="book-card__info"><strong>ISBN:</strong> {{ livro.isbn }}</p>
-              <p class="book-card__info"><strong>Disponivel:</strong>{{livro.disponivel}}</p> 
-            </div>
-          {% endfor %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Editora</th>
+                    <th>Ano y/m/d </th>
+                    <th>ISBN</th>
+                    <th>Disponível</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for livro in listarBooks %}
+                <tr>
+                    <td>{{ livro.titulo }}</td>
+                    <td>{{ livro.autor }}</td>
+                    <td>{{ livro.editora }}</td>
+                    <td>{{ livro.ano }}</td>
+                    <td>{{ livro.isbn }}</td>
+                    <td>{{ livro.disponivel }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
+
 <script>
     document.getElementById('show-users-list').addEventListener('click', function() {
         document.getElementById('users-list').style.display = 'block';
+        document.getElementById('books-list').style.display = 'none';
     });
+
     document.getElementById('show-books-list').addEventListener('click', function() {
         document.getElementById('books-list').style.display = 'block';
+        document.getElementById('users-list').style.display = 'none';
     });
+
     document.getElementById('seabook-button').addEventListener('click', function() {
         window.location.href = '/seabook';
     });
 </script>
+</body>
+</html>

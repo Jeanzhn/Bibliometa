@@ -34,10 +34,8 @@ class Livro:
                 if newlivro not in jalivros:
                     To_json.save_object(newlivro, 'data/livros.json')
                     return newlivro
-            else: 
-                for livro in jalivros:
-                    if livro[newlivro] == jalivros[newlivro]:
-                        return jalivros[newlivro]
+                elif newlivro == jalivros[livro]:
+                    return jalivros[livro]
         except requests.exceptions.RequestException as e:
             print(f"Erro na requisição: {e}")
             return None
