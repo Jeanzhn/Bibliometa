@@ -121,7 +121,7 @@ def seabook():
                 return render_template('bibliometa/seabook.html', erro="Nenhum livro encontrado ou erro na busca.")
         except Exception as e:
             return render_template('bibliometa/seabook.html', erro=f"Erro ao buscar livros: {e}")
-    return render_template('bibliometa/seabook.html', nome_usuario=session.get('nome'))    
+    return render_template('bibliometa/seabook.html', nome_usuario=session.get('nome'), tipoUser=request.args.get('tipoUser'))    
  
 @app.route("/logout")
 

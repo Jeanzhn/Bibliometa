@@ -12,9 +12,9 @@
   <header>
     <h1>MINHA BIBLIOTECA, BEM VINDO {{ nome_usuario }}</h1>
     <button class="logout-btn" onclick="logout()">Logout</button>
-    {%if tipoUser == "admin"%}
+    {% if tipoUser == "admin" %}
     <button class="lists-btn" onclick="lists()">Listas e relatorios</button>
-    {%endif%}
+    {% endif %}
   </header>
 
   <div class="container">
@@ -24,7 +24,7 @@
         <button type="submit">Buscar</button>
       </div>
     </form>
-  {%if tipoUser == "admin"%}
+    {% if tipoUser == "admin" %}
     <div class="buttons">
       <button type="button" onclick="mostrarFormulario()">Adicionar livro</button>
       <button type="button" class="remove" onclick="toggleRemoveMode()">Remover livro</button>
@@ -41,30 +41,30 @@
       <button class="confirm-btn" onclick="deleteSelectedBooks()">Confirmar remoção</button>
       <button class="cancel-btn" onclick="cancelDelete()">Cancelar</button>
     </div>
-  {% else %}
-    
-  <section class="results" id="bookList">
-
-    {% if erro %}
-    <div class="error-message">{{ erro }}</div>
-    {% elif livros %}
-    <h2 class="results__title">Resultados da Busca</h2>
-    {% for livro in livros %}
-      <article class="book-card">
-        <h3 class="book-card__title">{{ livro.titulo }}</h3>
-        <p class="book-card__info"><strong>Autor:</strong> {{ livro.autor }}</p>
-        <p class="book-card__info"><strong>Editora:</strong> {{ livro.editora }}</p>
-        <p class="book-card__info"><strong>Ano:</strong> {{ livro.ano }}</p>
-        <p class="book-card__info"><strong>ISBN:</strong> {{ livro.isbn }}</p>
-        <p class="book-card__info"><strong>Disponivel:</strong>{{ livro.disponivel}}</p>
-      </article>
-    {% endfor %}
     {% else %}
-    <p class="empty-message">Seu livro aparecerá aqui.</p>
+
+    <section class="results" id="bookList">
+
+      {% if erro %}
+      <div class="error-message">{{ erro }}</div>
+      {% elif livros %}
+      <h2 class="results__title">Resultados da Busca</h2>
+      {% for livro in livros %}
+        <article class="book-card">
+          <h3 class="book-card__title">{{ livro.titulo }}</h3>
+          <p class="book-card__info"><strong>Autor:</strong> {{ livro.autor }}</p>
+          <p class="book-card__info"><strong>Editora:</strong> {{ livro.editora }}</p>
+          <p class="book-card__info"><strong>Ano:</strong> {{ livro.ano }}</p>
+          <p class="book-card__info"><strong>ISBN:</strong> {{ livro.isbn }}</p>
+          <p class="book-card__info"><strong>Disponivel:</strong>{{ livro.disponivel}}</p>
+        </article>
+      {% endfor %}
+      {% else %}
+      <p class="empty-message">Seu livro aparecerá aqui.</p>
+      {% endif %}
     {% endif %}
-  {%endif%}
-  </section>
-  <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+    </section>
+    <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
 
 </body>
 
