@@ -60,20 +60,17 @@ def register():
     If the request method is GET, it renders the registration form.
     """
     if request.method == 'POST':
-        try:
-          nome = request.form.get('nome')
-          app.logger.debug("Nome do forms:",nome)
-          email = request.form.get('email')
-          app.logger.debug("Email do forms:",email)
-          senha = request.form.get('senha')
-          app.logger.debug("Senha do forms:",senha) 
-          confirmar_senha = request.form.get('confirmar_senha')
-          app.logger.debug("Confirmar senha do forms:",confirmar_senha)
-          typeUser = "user"
-          historico_emprestimo = []
-          id_membro = str(uuid.uuid4())
-        except Exception as e:
-          return render_template('bibliometa/login.html', register_error= f"Erro ao processar o formulário:{e}" , show_register=True)
+        nome = request.form.get('nome')
+        app.logger.debug("Nome do forms:",nome)
+        email = request.form.get('email')
+        app.logger.debug("Email do forms:",email)
+        senha = request.form.get('senha')
+        app.logger.debug("Senha do forms:",senha) 
+        confirmar_senha = request.form.get('confirmar_senha')
+        app.logger.debug("Confirmar senha do forms:",confirmar_senha)
+        typeUser = "user"
+        historico_emprestimo = []
+        id_membro = str(uuid.uuid4())
         new_user = To_json.load_users('data/users.json')
         
         if len(senha)>12 or len(senha)<4:
