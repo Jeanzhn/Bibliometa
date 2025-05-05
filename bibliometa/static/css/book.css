@@ -153,6 +153,43 @@ header h1 {
     display: none;
 }
 
+.borrow-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.confirm-borrow {
+    margin-top: 10px;
+}
+
+.confirm-btn, .cancel-btn {
+    padding: 6px 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.confirm-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.book-card__info--error {
+    color: #f44336;
+    font-weight: bold;
+}
+
 .confirm-btn {
     padding: 0.5rem 1rem;
     border-radius: 6px;

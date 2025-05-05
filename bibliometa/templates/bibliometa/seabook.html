@@ -56,14 +56,15 @@
           <p class="book-card__info"><strong>Editora:</strong> {{ livro.editora }}</p>
           <p class="book-card__info"><strong>Ano:</strong> {{ livro.ano }}</p>
           <p class="book-card__info"><strong>ISBN:</strong> {{ livro.isbn }}</p>
-          <p class="book-card__info"><strong>Disponivel:</strong>{{ livro.disponivel }}</p>
+          <p class="book-card__info"><strong>Disponível:</strong> {{ livro.disponivel }}</p>
           {% if livro.disponivel %}
-          <div id="confirmAlugar" class="confirm-alugar" style="display: none;">
-            <button class="confirm-btn" onclick="deleteSelectedBooks()">Confirmar emprestar</button>
-            <button class="cancel-btn" onclick="cancelDelete()">Cancelar</button>
+          <button class="borrow-btn" onclick="toggleBorrowConfirm(this)">Emprestar</button>
+          <div class="confirm-borrow" style="display: none;">
+            <button class="confirm-btn" onclick="confirmBorrow(this)">Confirmar empréstimo</button>
+            <button class="cancel-btn" onclick="cancelBorrow(this)">Cancelar</button>
           </div>
           {% else %}
-          <p class="book-card__info"><strong>Emprestado:</strong>Livro emprestado</p>
+          <p class="book-card__info book-card__info--error"><strong>Emprestado:</strong> Livro já alugado</p>
           {% endif %}
         </article>
       {% endfor %}

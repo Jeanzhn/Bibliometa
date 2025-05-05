@@ -49,6 +49,27 @@ function cancelDelete() {
   toggleRemoveMode();
 }
 
+function toggleBorrowConfirm(button) {
+  const confirmDiv = button.nextElementSibling;
+  button.style.display = 'none';
+  confirmDiv.style.display = 'block';
+}
+
+function confirmBorrow(button) {
+  const bookCard = button.closest('.book-card');
+  const titulo = bookCard.querySelector('.book-card__title').textContent;
+  // Aqui você pode adicionar a lógica para registrar o empréstimo
+  alert(`Livro "${titulo}" emprestado com sucesso!`);
+  location.reload();
+}
+
+function cancelBorrow(button) {
+  const confirmDiv = button.closest('.confirm-borrow');
+  const borrowBtn = confirmDiv.previousElementSibling;
+  confirmDiv.style.display = 'none';
+  borrowBtn.style.display = 'block';
+}
+
 function addBook(event) {
   event.preventDefault();
   const titulo = document.getElementById("titulo").value;
