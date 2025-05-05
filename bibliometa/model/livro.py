@@ -30,15 +30,11 @@ class Livro:
                     disponivel= True
                     )
             jalivros = To_json.load_users('data/livros.json')
-            
-            # Verifica se o livro já existe
             for livro in jalivros:
                 if livro['titulo'] == newlivro.titulo and livro['isbn'] == newlivro.isbn:
                     return livro
-            
-            # Se não existir, salva e retorna o novo livro
             To_json.save_object(newlivro, 'data/livros.json')
-            return newlivro.__dict__
+            return newlivro
             
         except requests.exceptions.RequestException as e:
             print(f"Erro na requisição: {e}")
