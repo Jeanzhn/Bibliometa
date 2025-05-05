@@ -5,6 +5,7 @@ from main import app
 import uuid
 import logging
 import sys
+import re
 
 # Cria um handler para o console (StreamHandler)
 console_handler = logging.StreamHandler(sys.stdout)
@@ -28,15 +29,19 @@ def homepage():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        nome = request.form.get('nome').lower()
-        app.logger.debug("Nome do forms:"+nome)
+        nome = request.form.get('nome')
+        app.logger.debug(f"Nome do forms:{nome}")
         senha = request.form.get('senha')
         
         users = To_json.load_users('data/users.json')
+        admin = To_json.load_users('data/admin.json')
         
         if nome in users and users[nome]['senha'] == senha:
             session['nome'] = nome
-            return redirect(url_for('seabook'))
+            return redirect(url_for('seabook', tipoUser=users[nome]['tipo']))
+        elif nome in admin and admin[nome]['senha'] == senha:
+            session['nome'] = nome
+            return redirect(url_for('seabook', tipoUser=admin[nome]['tipo']))
         else:
             return render_template('bibliometa/login.html', error="Usuário ou senha inválidos")
     
@@ -54,22 +59,31 @@ def register():
     If the request method is GET, it renders the registration form.
     """
     if request.method == 'POST':
-        nome = request.form.get('nome')
-        app.logger.debug("Nome do forms:"+nome)
-        email = request.form.get('email')
-        app.logger.debug("Email do forms:"+email)
-        senha = request.form.get('senha')
-        app.logger.debug("Senha do forms:"+senha)
-        confirmar_senha = request.form.get('confirmar_senha')
-        app.logger.debug("Confirmar senha do forms:"+confirmar_senha)
-        historico_emprestimo = []
-        id_membro = str(uuid.uuid4())
-
+        try:
+          nome = request.form.get('nome')
+          app.logger.debug("Nome do forms:",nome)
+          email = request.form.get('email')
+          app.logger.debug("Email do forms:",email)
+          senha = request.form.get('senha')
+          app.logger.debug("Senha do forms:",senha) 
+          confirmar_senha = request.form.get('confirmar_senha')
+          app.logger.debug("Confirmar senha do forms:",confirmar_senha)
+          typeUser = "user"
+          historico_emprestimo = []
+          id_membro = str(uuid.uuid4())
+        except Exception as e:
+          return render_template('bibliometa/login.html', register_error= f"Erro ao processar o formulário:{e}" , show_register=True)
         new_user = To_json.load_users('data/users.json')
+        
+        if len(senha)>12 or len(senha)<4:
+            return "Senha deve ter no minimo 4 caracteres e máximo 12 caracteres", 400
 
         if not all([nome, email, senha, confirmar_senha]):
             return "Preencha todos os campos!", 400
-
+            
+        if not re.fullmatch(r"[^@]+@[^@]+\.[^@]+", email):
+            return "Email invalido", 400
+            
         if senha != confirmar_senha:
             return "As senhas não coincidem!", 400
 
@@ -80,7 +94,8 @@ def register():
             'senha': senha,
             'email': email,
             'id_membro': id_membro,
-            'historico_emprestimos': historico_emprestimo
+            'historico_emprestimos': historico_emprestimo,
+            'tipo': typeUser
         }
 
         To_json.save_users(new_user, 'data/users.json')

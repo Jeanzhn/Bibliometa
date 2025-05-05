@@ -12,7 +12,9 @@
   <header>
     <h1>MINHA BIBLIOTECA, BEM VINDO {{ nome_usuario }}</h1>
     <button class="logout-btn" onclick="logout()">Logout</button>
+    {%if tipoUser == "admin"%}
     <button class="lists-btn" onclick="lists()">Listas e relatorios</button>
+    {%endif%}
   </header>
 
   <div class="container">
@@ -22,7 +24,7 @@
         <button type="submit">Buscar</button>
       </div>
     </form>
-
+  {%if tipoUser == "admin"%}
     <div class="buttons">
       <button type="button" onclick="mostrarFormulario()">Adicionar livro</button>
       <button type="button" class="remove" onclick="toggleRemoveMode()">Remover livro</button>
@@ -33,19 +35,19 @@
         <input type="text" id="titulo" placeholder="Título do Livro" required />
         <input type="text" id="autor" placeholder="Autor" required />
         <button type="submit">Salvar</button>
-      </form>
+      </form>  
     </div>
-  <div id="confirmDelete" class="confirm-delete" style="display: none;">
-    <button class="confirm-btn" onclick="deleteSelectedBooks()">Confirmar remoção</button>
-    <button class="cancel-btn" onclick="cancelDelete()">Cancelar</button>
-  </div>
-
+    <div id="confirmDelete" class="confirm-delete" style="display: none;">
+      <button class="confirm-btn" onclick="deleteSelectedBooks()">Confirmar remoção</button>
+      <button class="cancel-btn" onclick="cancelDelete()">Cancelar</button>
+    </div>
+  {% else %}
+    
   <section class="results" id="bookList">
 
     {% if erro %}
     <div class="error-message">{{ erro }}</div>
     {% elif livros %}
-    
     <h2 class="results__title">Resultados da Busca</h2>
     {% for livro in livros %}
       <article class="book-card">
@@ -60,6 +62,7 @@
     {% else %}
     <p class="empty-message">Seu livro aparecerá aqui.</p>
     {% endif %}
+  {%endif%}
   </section>
   <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
 
