@@ -78,5 +78,13 @@
         "ano": "2013-03-01",
         "isbn": "9781615357482",
         "disponivel": true
+    },
+    {
+        "titulo": "One Piece, Vol. 2",
+        "autor": "Eiichiro Oda",
+        "editora": "VIZ Media LLC",
+        "ano": "2010-11-02",
+        "isbn": "9781421546049",
+        "disponivel": true
     }
 ]
