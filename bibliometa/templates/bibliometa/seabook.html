@@ -15,26 +15,26 @@
     <button class="lists-btn" onclick="lists()">Listas e relatorios</button>
   </header>
 
-  <form id="seabiblioteca" action="/seabook" method="POST">
-    <div class="container">
+  <div class="container">
+    <form id="seabiblioteca" action="/seabook" method="POST">
       <div class="search-bar">
         <input name="parametro" type="text" placeholder="Buscar livro..." id="searchInput" />
         <button type="submit">Buscar</button>
       </div>
+    </form>
 
-      <div class="buttons">
-        <button onclick="mostrarFormulario()">Adicionar livro</button>
-        <button class="remove" onclick="toggleRemoveMode()">Remover livro</button>
-      </div>
+    <div class="buttons">
+      <button type="button" onclick="mostrarFormulario()">Adicionar livro</button>
+      <button type="button" class="remove" onclick="toggleRemoveMode()">Remover livro</button>
+    </div>
 
-      <div id="formularioLivro" class="form-livro" style="display: none;">
-        <form onsubmit="addBook(event)">
-          <input type="text" id="titulo" placeholder="Título do Livro" required />
-          <input type="text" id="autor" placeholder="Autor" required />
-          <button type="submit">Salvar</button>
-        </form>
-      </div>
-  </form>
+    <div id="formularioLivro" class="form-livro" style="display: none;">
+      <form onsubmit="addBook(event)">
+        <input type="text" id="titulo" placeholder="Título do Livro" required />
+        <input type="text" id="autor" placeholder="Autor" required />
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
   <div id="confirmDelete" class="confirm-delete" style="display: none;">
     <button class="confirm-btn" onclick="deleteSelectedBooks()">Confirmar remoção</button>
     <button class="cancel-btn" onclick="cancelDelete()">Cancelar</button>
